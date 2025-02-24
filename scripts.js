@@ -36,9 +36,18 @@ function reservarArmario() {
   
   // Finalmente, mudamos a pendencia do usuário para verdadeira.
   usuario.pendencia = true;
+
+  // Definindo a data atual em que o armário foi reservado e colocando a info no objeto
+  const dataDeReserva = new Date();
+  armarioSorteado["dataDeReserva"] = dataDeReserva;
+
+  // Definindo a data de entrega das chaves (24h) e colocando a info no objeto
+  const dataDeEntrega = new Date(dataDeReserva); // Cria uma data idêntica a data de reserva
+  dataDeEntrega.setDate(dataDeEntrega.getDate() + 1); // Adiciona 1 dia
+  armarioSorteado["dataDeEntrega"] = dataDeEntrega;
   
-  // Impmimimos uma mensagem de reserva para o usuário.
-  document.getElementById("resultado").innerText = `Olá, ${usuario.nome}! O armário ${armarioSorteado.id} foi reservado com sucesso!`;
+  // Imprimimimos uma mensagem de reserva para o usuário com a data de entrega
+  document.getElementById("resultado").innerText = `Olá, ${usuario.nome}! O armário ${armarioSorteado.id} foi reservado com sucesso! Data de entrega: ${armarioSorteado["dataDeEntrega"].toLocaleDateString("pt-BR", { weekday: "long", day: "2-digit", month: "long", year: "numeric", hour: "2-digit", minute: "2-digit" })}`;
 
   console.log(usuario);
   console.log(armarios);
