@@ -1,0 +1,131 @@
+:root {
+    --cor-click: #223040;
+    --cor-sombra: #244F80;
+    --cor-text: #6A5227;
+    --cor-back1: #065CBE;
+    --cor-back2: #BF7C06;
+    --cor-back3: white;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Arimo", sans-serif;
+    display: flex;
+    justify-content: center;
+    background-color: var(--cor-back2);
+    padding: 16px;
+}
+
+.container {
+    max-width: 414px;
+    width: 100%;
+    background: white;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.header, .mensagens, .aulas, .noticias {
+    padding: 16px;
+    border-radius: 8px;
+    grid-column: 1 / -1;
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    background-color: var(--cor-back3);
+}
+
+.header {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    gap: 8px;
+    padding: 16px;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.icon-left, .logo, .icon-right {
+    color: var(--cor-back1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Menu Oculto */
+.menu {
+    display: none;
+    position: absolute;
+    top: 60px;
+    left: 20px;
+    background: var(--cor-back3);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    border-radius: 8px;
+    padding: 10px;
+    z-index: 100;
+}
+
+.menu button {
+    display: block;
+    width: 100%;
+    background: var(--cor-back1);
+    color: white;
+    border: none;
+    padding: 8px;
+    margin: 5px 0;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.menu button:hover {
+    background: var(--cor-sombra);
+}
+
+.aulas {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.material-symbols-outlined {
+    font-size: 2em;
+    cursor: pointer;
+}
+
+.svg_logo_inatel {
+    fill: var(--cor-back1);
+}
+
+/* Estilos para Tema Claro */
+.tema-claro {
+    --cor-back2: white;
+    --cor-back3: #f0f0f0;
+    --cor-text: black;
+}
+
+/* Estilos para Tema Escuro */
+.tema-escuro {
+    --cor-back2: #121212;
+    --cor-back3: #1e1e1e;
+    --cor-text: white;
+}
+
+@media (min-width: 768px) {
+    .container {
+        max-width: 600px;
+        grid-template-columns: 1fr 1fr;
+        grid-template-areas: 
+            "header header"
+            "mensagens mensagens"
+            "aulas aulas"
+            "noticias noticias";
+    }
+    .header { grid-area: header; }
+    .mensagens { grid-area: mensagens; }
+    .aulas { grid-area: aulas; }
+    .noticias { grid-area: noticias; }
+}

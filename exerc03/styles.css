@@ -1,11 +1,36 @@
 :root{
-    --cor-click: #4970BF;
-    --cor-sombra: #4B7DBF;
-    --cor-text: #548DBF;
-    --cor-back1: #54592E;
-    --cor-back2: #D9C5A0;
+    --cor-click: #244F80;
+    --cor-sombra: #223040;
+    --cor-text: black;
+    --cor-back: white;
+    --cor-contraste: #BF7C06;
+    --cor-header: #065CBE;
+    --cor-icons: white;
 }
-@import url(https://fonts.googleapis.com/css?family=Pacific);
+.theme-inatel {
+    --cor-click: #244F80;
+    --cor-sombra: #223040;
+    --cor-text: black;
+    --cor-back: white;
+    --cor-contraste: #BF7C06;
+    --cor-header: #065CBE;
+}
+.theme-escuro {
+    --cor-click: #244F80;
+    --cor-sombra: #223040;
+    --cor-text: black;
+    --cor-back: rgb(32, 32, 32);
+    --cor-contraste: #BF7C06;
+    --cor-header: #065CBE;
+}
+.theme-purple {
+    --cor-click: #244F80;
+    --cor-sombra: #223040;
+    --cor-text: black;
+    --cor-back: white;
+    --cor-contraste: #BF7C06;
+    --cor-header: #065CBE;
+}
 * {
     margin: 0;
     padding: 0;
@@ -15,54 +40,76 @@ body {
     font-family: "Arimo", sans-serif;
     display: flex;
     justify-content: center;
-    background-color: rgb(207, 53, 53);
+    background-color: var(--cor-back2);
     padding: 16px;
 }
 .container {
     max-width: 414px;
     width: 100%;
-    background: white;
+    background: var(--cor-back);
     padding: 16px;
     display: flex;
     flex-direction: column;
     gap: 8px;
     box-shadow: 0 0 10px rgba(0,0,0,0.1);
 }
+.menu {
+    display: none;
+    position: absolute;
+    top: 50px;
+    left: 10px;
+    background: var(--cor-back);
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    padding: 10px;
+    border-radius: 8px;
+    z-index: 1000;
+}
+.menu button {
+    display: block;
+    width: 100%;
+    margin: 5px 0;
+    padding: 10px;
+    background-color: var(--cor-sombra);
+    color: var(--cor-back);
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+.menu button:hover {
+    background-color: var(--cor-click);
+}
 .header, .mensagens, .aulas, .noticias {
     padding: 16px;
     border-radius: 8px;
     grid-column: 1 / -1;
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    background-color: var(--cor-back);
+    color: var(--cor-text);
 }
 .header {
-    background: #ff3434;
     display: grid;
     grid-template-columns: 1fr 2fr 1fr;
     gap: 8px;
     padding: 16px;
     border-radius: 8px;
     text-align: center;
+    background-color: var(--cor-header);
+    color: var(--cor-back);
 }
 .icon-left,
 .logo,
 .icon-right {
+    color: var(--cor-back);
     display: flex;
     align-items: center;
     justify-content: center;
 }
-.mensagens {
-    background: #2fff40;
-}
 .aulas {
-    background: #3b4fff;
     grid-row: 3/5;
     display: flex;
     flex-direction: column;
     gap: 8px;
 }
-.noticias {
-    background: #f2ff41;
-}
-
 .material-symbols-outlined {
     font-size: 2em; 
     font-variation-settings:
@@ -70,6 +117,9 @@ body {
     'wght' 400,
     'GRAD' 0,
     'opsz' 24
+}
+.svg_logo_inatel {
+    fill: var(--cor-back);
 }
 
 @media (min-width: 768px) {

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Projeto de S05, Dashboard Inatel">
+    <meta name="author" content="Pedro Frugoli">
+    <meta name="keywords" content="inatel, dashboard, aluno">
+    <meta name="robots" content="index, follow">
+    <title>Dashboard Inatel</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Symbols+Outlined" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="icon-left">
+                <span id="menu-button" class="material-symbols-outlined">menu</span>
+            </div>
+            <div class="logo">
+                <svg class="svg_logo_inatel" xmlns="http://www.w3.org/2000/svg" viewBox="100 150 390 116">
+                    <path class="path_logo" d="M127.455,156.988h21.287l-21.859,102.835H105.69L127.455,156.988L127.455,156.988z M225.618,208.048..."></path>
+                </svg>
+            </div>
+            <div class="icon-right">
+                <span class="material-symbols-outlined">person</span>
+            </div>
+        </div>
+
+        <!-- Menu Oculto -->
+        <div id="menu" class="menu">
+            <button id="tema-claro">Tema Claro</button>
+            <button id="tema-escuro">Tema Escuro</button>
+        </div>
+
+        <div class="mensagens">Mensagens</div>
+        <div class="aulas">
+            <div>Disciplina 1 - Sala e Horário</div>
+            <div>Disciplina 2 - Sala e Horário</div>
+            <div>Disciplina 3 - Sala e Horário</div>
+        </div>
+        <div class="noticias">Card de Notícias</div>
+    </div>
+
+    <script src="scripts.js"></script>
+</body>
+</html>
