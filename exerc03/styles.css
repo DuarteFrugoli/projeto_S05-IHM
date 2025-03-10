@@ -14,22 +14,25 @@
     --cor-back: white;
     --cor-contraste: #BF7C06;
     --cor-header: #065CBE;
+    --cor-icons: white;
 }
 .theme-escuro {
     --cor-click: #244F80;
-    --cor-sombra: #223040;
-    --cor-text: black;
-    --cor-back: rgb(32, 32, 32);
+    --cor-sombra: #75a2d4;
+    --cor-text: white;
+    --cor-back: rgb(26, 26, 26);
     --cor-contraste: #BF7C06;
     --cor-header: #065CBE;
+    --cor-icons: white;
 }
 .theme-purple {
-    --cor-click: #244F80;
-    --cor-sombra: #223040;
+    --cor-click: #5b2480;
+    --cor-sombra: #2f2240;
     --cor-text: black;
     --cor-back: white;
-    --cor-contraste: #BF7C06;
-    --cor-header: #065CBE;
+    --cor-contraste: #69bf06;
+    --cor-header: #9f06be;
+    --cor-icons: white;
 }
 * {
     margin: 0;
@@ -40,7 +43,7 @@ body {
     font-family: "Arimo", sans-serif;
     display: flex;
     justify-content: center;
-    background-color: var(--cor-back2);
+    background-color: var(--cor-back);
     padding: 16px;
 }
 .container {
@@ -94,12 +97,12 @@ body {
     border-radius: 8px;
     text-align: center;
     background-color: var(--cor-header);
-    color: var(--cor-back);
+    color: var(--cor-icons);
 }
 .icon-left,
 .logo,
 .icon-right {
-    color: var(--cor-back);
+    color: var(--cor-icons);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -119,7 +122,7 @@ body {
     'opsz' 24
 }
 .svg_logo_inatel {
-    fill: var(--cor-back);
+    fill: var(--cor-icons);
 }
 
 @media (min-width: 768px) {
