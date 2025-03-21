@@ -1,4 +1,4 @@
-:root{
+:root {
     --cor-click: #244F80;
     --cor-sombra: rgba(0,0,0,0.2);
     --cor-text: black;
@@ -162,6 +162,18 @@ body {
     width: 18px;
     display: inline-block;
     vertical-align: middle
+}
+
+.noticias button {
+    position: absolute;
+    top: 30%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    font-size: 10px;
 }
 
 #prevBtn { left: 10px; }
