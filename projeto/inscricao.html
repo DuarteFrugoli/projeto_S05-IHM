@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inscrição no Evento</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .inscricao-container {
+            max-width: 400px;
+            margin: 40px auto;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px #0002;
+            padding: 2em;
+        }
+        .evento-info img {
+            width: 100%;
+            border-radius: 6px;
+            margin-bottom: 1em;
+        }
+        .evento-info h2 {
+            margin: 0.5em 0 0.2em 0;
+        }
+        .evento-info p {
+            margin: 0.2em 0;
+        }
+        form label {
+            display: block;
+            margin-top: 1em;
+        }
+        form input[type="text"], form input[type="email"] {
+            width: 100%;
+            padding: 0.5em;
+            margin-top: 0.2em;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        form button {
+            margin-top: 1.5em;
+            width: 100%;
+            padding: 0.7em;
+            background: #005baa;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            font-size: 1em;
+            cursor: pointer;
+        }
+        .success-message {
+            color: green;
+            margin-top: 1em;
+            text-align: center;
+        }
+        .pagamento-container {
+            margin-top: 1.5em;
+            padding: 1em;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            background: #f8f8f8;
+            display: none;
+        }
+        .pagamento-container button {
+            margin-top: 1em;
+            width: 100%;
+            padding: 0.7em;
+            background: #28a745;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            font-size: 1em;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="inscricao-container">
+        <div class="evento-info" id="evento-info">
+            <!-- Dados do evento serão inseridos aqui -->
+        </div>
+        <form id="form-inscricao">
+            <label for="nome">Nome:</label>
+            <input type="text" id="nome" name="nome" required>
+            <label for="email">E-mail:</label>
+            <input type="email" id="email" name="email" required>
+            <button type="submit">Inscrever-se</button>
+        </form>
+        <div class="pagamento-container" id="pagamento-container">
+            <p><strong>Valor do evento:</strong> R$ <span id="valor-evento"></span></p>
+            <button id="btn-pagar">Realizar Pagamento</button>
+        </div>
+        <div class="success-message" id="success-message" style="display:none;">
+            Inscrição realizada com sucesso!
+        </div>
+    </div>
+    <script>
+        // Mesmos dados dos eventos do scripts.js
+        const eventos = [
+            {
+                id: 1,
+                title: 'Semana do Software 2025',
+                date: '12/05',
+                time: '10:00',
+                location: 'Salão de Eventos',
+                type: 'tech',
+                description: 'Uma semana inteira dedicada à tecnologia e inovação, com palestras, workshops e hackathons.',
+                image: 'https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&q=80&w=800&h=400',
+                valor: 50.00 // Evento pago
+            },
+            {
+                id: 2,
+                title: 'Workshop de IoT',
+                date: '12/01',
+                time: '08:00',
+                location: 'Laboratório CS&I',
+                type: 'tech',
+                description: 'Workshop prático sobre Internet das Coisas e suas aplicações na indústria 4.0.',
+                image: 'https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&q=80&w=800&h=400',
+                valor: 0.00
+            },
+            {
+                id: 3,
+                title: 'Festa dos Alunos 2025',
+                date: '18/05',
+                time: '19:00',
+                location: 'Área Esportiva do Inatel',
+                type: 'cultural',
+                description: 'Venha comemorar a melhor Festa dos Alunos de todos os tempos!',
+                image: 'https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&q=80&w=800&h=400',
+                valor: 30.00 // Evento pago
+            },
+            {
+                id: 4,
+                title: 'Feira de Oportunidades',
+                date: '04/05',
+                time: '10:00',
+                location: 'Salão de Eventos',
+                type: 'academic',
+                description: 'Venha conhecer empresas e projetos com destaque na área da engenharia.',
+                image: 'https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&q=80&w=800&h=400',
+                valor: 0.00
+            }
+        ];
+
+        // Pega o ID do evento pela URL
+        const params = new URLSearchParams(window.location.search);
+        const id = parseInt(params.get('id'), 10);
+        const evento = eventos.find(e => e.id === id);
+
+        // Exibe os dados do evento
+        const eventoInfo = document.getElementById('evento-info');
+        if (evento) {
+            eventoInfo.innerHTML = `
+                <img src="${evento.image}" alt="${evento.title}">
+                <h2>${evento.title}</h2>
+                <p><strong>Data:</strong> ${evento.date} às ${evento.time}</p>
+                <p><strong>Local:</strong> ${evento.location}</p>
+                <p>${evento.description}</p>
+                ${evento.valor > 0 ? `<p><strong>Valor:</strong> R$ ${evento.valor.toFixed(2)}</p>` : ''}
+            `;
+        } else {
+            eventoInfo.innerHTML = "<p>Evento não encontrado.</p>";
+            document.getElementById('form-inscricao').style.display = 'none';
+        }
+
+        // Simula envio do formulário
+        document.getElementById('form-inscricao').addEventListener('submit', function(e) {
+            e.preventDefault();
+            if (evento && evento.valor > 0) {
+                // Exibe a aba de pagamento
+                document.getElementById('pagamento-container').style.display = 'block';
+                document.getElementById('valor-evento').textContent = evento.valor.toFixed(2);
+                document.getElementById('form-inscricao').style.display = 'none';
+            } else {
+                document.getElementById('success-message').style.display = 'block';
+                this.reset();
+                document.getElementById('form-inscricao').style.display = 'block';
+            }
+        });
+
+        // Simula pagamento
+        document.getElementById('btn-pagar').addEventListener('click', function() {
+            document.getElementById('pagamento-container').style.display = 'none';
+            document.getElementById('success-message').style.display = 'block';
+        });
+    </script>
+</body>
+</html>

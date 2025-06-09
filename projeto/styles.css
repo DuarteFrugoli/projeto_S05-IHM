@@ -1,0 +1,197 @@
+:root {
+    --cor-click: #244F80;
+    --cor-sombra: rgba(0,0,0,0.2);
+    --cor-text: black;
+    --cor-back: white;
+    --cor-contraste: #BF7C06;
+    --cor-header: #065CBE;
+    --cor-icons: white;
+}
+.theme-inatel {
+    --cor-click: #244F80;
+    --cor-sombra: rgba(0,0,0,0.2);
+    --cor-text: black;
+    --cor-back: white;
+    --cor-contraste: #BF7C06;
+    --cor-header: #065CBE;
+    --cor-icons: white;
+}
+.theme-escuro {
+    --cor-click: #244F80;
+    --cor-sombra: rgba(255, 255, 255, 0.2);
+    --cor-text: white;
+    --cor-back: rgb(26, 26, 26);
+    --cor-contraste: #BF7C06;
+    --cor-header: #065CBE;
+    --cor-icons: white;
+}
+.theme-purple {
+    --cor-click: #5b2480;
+    --cor-sombra: rgba(0,0,0,0.2);
+    --cor-text: black;
+    --cor-back: white;
+    --cor-contraste: #69bf06;
+    --cor-header: #9f06be;
+    --cor-icons: white;
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    font-family: "Arimo", sans-serif;
+    display: flex;
+    justify-content: center;
+    background-color: var(--cor-back);
+    padding: 16px;
+}
+.container {
+    max-width: 414px;
+    width: 100%;
+    background: var(--cor-back);
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    box-shadow: 0 0 10px var(--cor-sombra);
+}
+.menu {
+    display: none;
+    position: center;
+    top: 50px;
+    left: 10px;
+    background: var(--cor-back);
+    box-shadow: 0px 0px 8px var(--cor-sombra);
+    padding: 10px;
+    border-radius: 8px;
+    z-index: 1000;
+}
+.menu button {
+    display: block;
+    width: 100%;
+    margin: 5px 0;
+    padding: 10px;
+    background-color: var(--cor-header);
+    color: var(--cor-icons);
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+.menu button:hover {
+    background-color: var(--cor-click);
+}
+.header, .mensagens, .aulas, .noticias {
+    padding: 16px;
+    border-radius: 8px;
+    grid-column: 1 / -1;
+    box-shadow: 0 0 10px var(--cor-sombra);
+    background-color: var(--cor-back);
+    color: var(--cor-text);
+}
+.header {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    gap: 8px;
+    padding: 16px;
+    border-radius: 8px;
+    text-align: center;
+    background-color: var(--cor-header);
+    color: var(--cor-icons);
+}
+.icon-left,
+.logo,
+.icon-right {
+    color: var(--cor-icons);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+.aulas {
+    grid-row: 3/5;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+.material-symbols-outlined {
+    font-size: 2em; 
+    font-variation-settings:
+    'FILL' 0,
+    'wght' 400,
+    'GRAD' 0,
+    'opsz' 24
+}
+.svg_logo_inatel {
+    fill: var(--cor-icons);
+}
+
+.carousel-container {
+    position: relative;
+    overflow: hidden;
+    background-color: var(--cor-back);
+    border-radius: 10px;
+    margin: 20px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1)
+  
+}
+
+.carousel {
+    display: flex;
+}
+
+.card {
+    min-width: 100%;
+    text-align: center;
+    cursor: pointer;
+}
+
+.card img {
+    width: 100%;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+}
+
+.info {
+    padding: 10px
+}
+
+.icon {
+    font-size: 15px;
+    margin-left: 5px;
+    margin-right: 2px;
+    width: 18px;
+    display: inline-block;
+    vertical-align: middle
+}
+
+.noticias button {
+    position: absolute;
+    top: 30%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    font-size: 10px;
+}
+
+#prevBtn { left: 10px; }
+#nextBtn { right: 10px; }
+
+@media (min-width: 768px) {
+    .container {
+        max-width: 600px;
+        grid-template-columns: 1fr 1fr;
+        grid-template-areas: 
+            "header header"
+            "mensagens mensagens"
+            "aulas aulas"
+            "noticias noticias";
+    }
+    .header { grid-area: header; }
+    .mensagens { grid-area: mensagens; }
+    .aulas { grid-area: aulas; }
+    .noticias { grid-area: noticias; }
+}
